@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+'use strict'
+
+var josmURL = require('./');
+var fs = require('fs');
+
+if (process.argv.length < 2) {
+    console.log('Usage: geojson-josm-url <geojson path>');
+    return;
+}
+
+var geojsonPath = process.argv[2];
+var result = josmURL(JSON.parse(fs.readFileSync(geojsonPath)));
+process.stdout.write(JSON.stringify(result));
+
