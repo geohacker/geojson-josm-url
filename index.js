@@ -8,6 +8,7 @@ module.exports = function (geojson) {
         var prefix = Object.keys(f.properties).indexOf('_osm_way_id') == -1 ? 'n' : 'w';
         var osmID = f.properties._osm_way_id || f.properties._osm_node_id;
         f.properties['_josm_url'] = baseURL + prefix + osmID;
+        f.properties['_josm_link'] = '<a href="' + f.properties['_josm_url'] + '">Open in JOSM</a>';
     });
     return geojson;
 };
